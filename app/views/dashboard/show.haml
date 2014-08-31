@@ -1,0 +1,14 @@
+.wrapper
+  %h1
+    = change_name(@star.name)
+  - if @star.profile_path.present?
+    %img{ :src => "http://cf2.imgobject.com/t/p/w500" + @star.profile_path, :width => "200" }
+  - else
+    %img{ :src => "http://www.hollandlift.com/wp-content/themes/hollandlift/assets/images/no_image.jpg", :width => "200" }
+  %h5= 'Orginal Name: ' + @star.name
+  %hr
+  %h3 Bekannt aus: 
+  - @star.known_for.each do |movie|
+    %p= movie.title
+  
+  = button_to "Refresh page", reload_path, :method => :get
